@@ -1,9 +1,13 @@
-# I4: add colors
+# I5: guess limiting
 
 require 'sinatra'
 require 'sinatra/reloader'
 
+
+@@guesses = 5
+
 number = rand(100)
+
 
 def check_guess(guess, number)
   if (guess - number) > 5
@@ -21,15 +25,64 @@ def check_guess(guess, number)
   elsif guess == number
     {"message" => "You are correct! <p>The secret number is #{number}.</p>", "background" => "green"}
   end
-
 end
+
 
 get '/' do
-  guess = params['guess'].to_i
-  messages = check_guess(guess, number)
-  erb :index, :locals => {:number  => number,
-                          :messages => messages }
+  if @@guesses > 0
+    guess = params['guess'].to_i
+    @@guesses -= 1
+    messages = check_guess(guess, number)
+    erb :index, :locals => {:number  => number,
+                            :messages => messages }
+  elsif @@guesses = 0
+    number = rand(100)
+    @@guesses = 5
+    {"message" => "You lose. A new number has been generated for you...", "background" => "red"}
+    # puts "You lose. A new number has been generated for you..."
+  end
 end
+
+
+
+
+
+
+
+
+
+# # I4: add colors
+#
+# require 'sinatra'
+# require 'sinatra/reloader'
+#
+# number = rand(100)
+#
+# def check_guess(guess, number)
+#   if (guess - number) > 5
+#     {"message" => "Way too high!", "background" => "red"}
+#
+#   elsif guess > number
+#     {"message" => "Too high!", "background" => "orange"}
+#
+#   elsif (number - guess) > 5
+#     {"message" => "Way too low!", "background" => "red"}
+#
+#   elsif guess < number
+#     {"message" => "Too low!", "background" => "orange"}
+#
+#   elsif guess == number
+#     {"message" => "You are correct! <p>The secret number is #{number}.</p>", "background" => "green"}
+#   end
+#
+# end
+#
+# get '/' do
+#   guess = params['guess'].to_i
+#   messages = check_guess(guess, number)
+#   erb :index, :locals => {:number  => number,
+#                           :messages => messages }
+# end
 
 
 
