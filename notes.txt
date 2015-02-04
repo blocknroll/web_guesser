@@ -1,0 +1,19 @@
+http://tutorials.jumpstartlab.com/projects/web_guesser.html
+
+
+to do:
+  I5: get guess limiting working
+
+  replace 'guesses' class variable with attr_accessor
+
+  styling
+
+
+
+generate secret number
+begin with 5 guesses
+wait for input
+
+take a guess
+app runs 'check_guess'
+guesses -= 1, then show remaining guesses

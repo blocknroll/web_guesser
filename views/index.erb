@@ -10,17 +10,27 @@
   <body>
 
     <p>
-      <%= messages["message"] %>
+      Please pick a number between 0 and 100.<br>
+      You have 5 guesses to start.
     </p>
 
-    <!-- <p>
-      The SECRET number is <%= number %>
-    </p> -->
+    <p>
+      guesses remaining: <%= guesses %>
+    </p>
 
     <form>
       <input type='text' name='guess' />
       <input type='submit' value='Guess!' />
     </form>
+
+    <p>
+      <%= messages["message"] %>
+    </p>
+
+    <p>
+      (pssst....the SECRET NUMBER is <%= secret_number %>)
+    </p>
+
 
   </body>
 
