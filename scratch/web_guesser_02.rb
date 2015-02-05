@@ -9,10 +9,6 @@ secret_number = rand(100)
 
 
 def check_guess(guess, secret_number)
-  return { "message" => "Welcome! Take a guess.", "background" => "white"} unless guess
-
-  guess = guess.to_i
-
   if (guess - secret_number) > 5
     @@guesses -= 1
     {"message" => "Way too high!", "background" => "red"}
@@ -36,9 +32,8 @@ end
 
 
 get '/' do
-  guess = params['guess']
+  guess = params['guess'].to_i
   messages = check_guess(guess, secret_number)
-
   erb :index, :locals => {:secret_number => secret_number,
                           :guesses       => @@guesses,
                           :messages      => messages }
