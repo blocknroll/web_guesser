@@ -17,3 +17,19 @@ wait for input
 take a guess
 app runs 'check_guess'
 guesses -= 1, then show remaining guesses
+
+
+
+
+Rachel's help:
+  get '/' do
+    guess = params['guess']
+    messages = if guess
+      check_guess(guess.to_i, secret_number)
+    else
+      { "message" => "Welcome! Take a guess.", "background" => "white"}
+    end
+    erb :index, :locals => {:secret_number => secret_number,
+                            :guesses       => @@guesses,
+                            :messages      => messages }
+  end
