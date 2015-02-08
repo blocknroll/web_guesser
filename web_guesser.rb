@@ -16,23 +16,26 @@ def check_guess(guess, secret_number)
 
   guess = guess.to_i
 
+  @@guesses -= 1
+  
+
   if (guess - secret_number) > 5
-    @@guesses -= 1
+    # @@guesses -= 1
     {"message"    => "WAY TOO HIGH!<br>&#8595; &#8595; &#8595;",
      "background" => "red"}
 
   elsif guess > secret_number
-    @@guesses -= 1
+    # @@guesses -= 1
     {"message"    => "Too high!<br>&#8595;",
      "background" => "orange"}
 
   elsif (secret_number - guess) > 5
-    @@guesses -= 1
+    # @@guesses -= 1
     {"message"    => "WAY TOO LOW!<br>&#8593; &#8593; &#8593;",
      "background" => "red"}
 
   elsif guess < secret_number
-    @@guesses -= 1
+    # @@guesses -= 1
     {"message"    => "Too low!<br>&#8593;",
      "background" => "orange"}
 
@@ -47,7 +50,6 @@ end
 get '/' do
   guess = params['guess']
   messages = check_guess(guess, secret_number)
-
   erb :index, :locals => {:secret_number => secret_number,
                           :guesses       => @@guesses,
                           :messages      => messages }
