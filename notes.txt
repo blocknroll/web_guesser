@@ -42,3 +42,17 @@ Rachel's help:
                             :guesses       => @@guesses,
                             :messages      => messages }
   end
+
+
+
+
+
+
+  # if @@guesses > 0
+  #
+  # elsif @@guesses = 0
+  #   number = rand(100)
+  #   @@guesses = 5
+  #   {"message" => "You lose. A new number has been generated for you...", "background" => "red"}
+  #   # puts "You lose. A new number has been generated for you..."
+  # end
