@@ -8,6 +8,13 @@ to do:
 
   styling: can a linked css file interpret erb?
 
+  styling:
+    -font
+    -font-size
+    -arrows
+    form style
+    button style
+
 
 
 generate secret number
@@ -17,6 +24,8 @@ wait for input
 take a guess
 app runs 'check_guess'
 guesses -= 1, then show remaining guesses
+
+
 
 
 
